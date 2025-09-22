@@ -1,6 +1,7 @@
 package br.com.app.movie.data.remote.service
 
 import br.com.app.movie.data.remote.dto.DetailsDto
+import br.com.app.movie.data.remote.dto.ImagesDto
 import br.com.app.movie.data.remote.dto.MoviesDto
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -17,5 +18,8 @@ interface MovieService {
 
     @GET("movie/{movie_id}?$api_key")
     suspend fun getDetails(@Path("movie_id") id: Int): DetailsDto
+
+    @GET("movie/{movie_id}/images?$api_key")
+    suspend fun movieImages(@Path("movie_id") id: Int): ImagesDto
 
 }

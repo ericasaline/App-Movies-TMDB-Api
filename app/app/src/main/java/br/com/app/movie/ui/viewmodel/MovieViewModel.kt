@@ -31,6 +31,10 @@ class MovieViewModel(
             repository.getDetails(id = 1078605).collect {
                 Log.d("WINX", "getDetails: $it\n\n")
             }
+
+            repository.getImages(id = 1078605).collect {
+                Log.d("WINX", "getImages: $it\n\n")
+            }
         }
     }
 

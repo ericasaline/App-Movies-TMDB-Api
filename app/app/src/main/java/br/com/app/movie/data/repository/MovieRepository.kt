@@ -1,6 +1,7 @@
 package br.com.app.movie.data.repository
 
 import br.com.app.movie.data.model.Details
+import br.com.app.movie.data.model.Image
 import br.com.app.movie.data.model.Movie
 import br.com.app.movie.data.remote.api.ApiResult
 import kotlinx.coroutines.flow.Flow
@@ -12,5 +13,7 @@ interface MovieRepository {
     suspend fun getUpcoming(): Flow<ApiResult<List<Movie>>>
 
     suspend fun getDetails(id: Int): Flow<ApiResult<Details>>
+
+    suspend fun getImages(id: Int): Flow<ApiResult<List<Image>>>
 
 }
