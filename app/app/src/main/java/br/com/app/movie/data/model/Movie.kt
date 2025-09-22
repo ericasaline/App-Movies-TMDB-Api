@@ -1,0 +1,16 @@
+package br.com.app.movie.data.model
+
+data class Movie(
+    val id: Int?,
+    val originalLanguage: String?,
+    val originalTitle: String?,
+    val overview: String?,
+    val popularity: Double?,
+    val posterPath: String?,
+    val releaseDate: String?,
+    val genres: List<Int>?,
+    val title: String?,
+    val video: Boolean?,
+    val voteAverage: Double?,
+    val voteCount: Double?
+)
