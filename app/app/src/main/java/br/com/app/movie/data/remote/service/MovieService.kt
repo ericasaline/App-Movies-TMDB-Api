@@ -10,4 +10,7 @@ interface MovieService {
     @GET("movie/now_playing?$api_key")
     suspend fun getNowPlaying(): MovieResponse
 
+    @GET("movie/upcoming?$api_key")
+    suspend fun getUpcoming(): MovieResponse
+
 }

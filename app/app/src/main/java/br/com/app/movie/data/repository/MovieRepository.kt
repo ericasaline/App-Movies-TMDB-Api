@@ -8,4 +8,6 @@ interface MovieRepository {
 
     suspend fun getNowPlaying(): Flow<ApiResult<MovieResponse>>
 
+    suspend fun getUpcoming(): Flow<ApiResult<MovieResponse>>
+
 }

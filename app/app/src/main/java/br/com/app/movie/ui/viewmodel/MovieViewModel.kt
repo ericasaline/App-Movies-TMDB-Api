@@ -21,8 +21,11 @@ class MovieViewModel(
     fun teste() {
         viewModelScope.launch {
             repository.getNowPlaying().collect {
-
                 Log.d("WINX", "getNowPlaying: $it")
+            }
+
+            repository.getUpcoming().collect {
+                Log.d("WINX", "getUpcoming: $it")
             }
         }
     }

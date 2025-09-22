@@ -17,4 +17,8 @@ class MovieRepositoryImpl(
         service.getNowPlaying()
     }.flowOn(dispatcher)
 
+    override suspend fun getUpcoming(): Flow<ApiResult<MovieResponse>> = safeCallApi {
+        service.getUpcoming()
+    }.flowOn(dispatcher)
+
 }
