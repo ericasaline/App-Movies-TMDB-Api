@@ -1,8 +1,10 @@
 package br.com.app.movie.data.repository
 
+import br.com.app.movie.data.mapper.toCredits
 import br.com.app.movie.data.mapper.toDetails
 import br.com.app.movie.data.mapper.toImage
 import br.com.app.movie.data.mapper.toMovie
+import br.com.app.movie.data.model.Credits
 import br.com.app.movie.data.model.Details
 import br.com.app.movie.data.model.Image
 import br.com.app.movie.data.model.Movie
@@ -31,7 +33,11 @@ class MovieRepositoryImpl(
     }.flowOn(dispatcher)
 
     override suspend fun getImages(id: Int): Flow<ApiResult<List<Image>>> = safeCallApi {
-        service.movieImages(id).images.map { it.toImage() }
+        service.getImages(id).images.map { it.toImage() }
+    }.flowOn(dispatcher)
+
+    override suspend fun getCredits(id: Int): Flow<ApiResult<Credits>> = safeCallApi {
+        service.getCredits(id).toCredits()
     }.flowOn(dispatcher)
 
 }

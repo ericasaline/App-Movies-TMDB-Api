@@ -1,5 +1,6 @@
 package br.com.app.movie.data.remote.service
 
+import br.com.app.movie.data.remote.dto.CreditsDto
 import br.com.app.movie.data.remote.dto.DetailsDto
 import br.com.app.movie.data.remote.dto.ImagesDto
 import br.com.app.movie.data.remote.dto.MoviesDto
@@ -20,6 +21,9 @@ interface MovieService {
     suspend fun getDetails(@Path("movie_id") id: Int): DetailsDto
 
     @GET("movie/{movie_id}/images?$api_key")
-    suspend fun movieImages(@Path("movie_id") id: Int): ImagesDto
+    suspend fun getImages(@Path("movie_id") id: Int): ImagesDto
+
+    @GET("movie/{movie_id}/credits?$api_key")
+    suspend fun getCredits(@Path("movie_id") id: Int): CreditsDto
 
 }

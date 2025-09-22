@@ -1,5 +1,6 @@
 package br.com.app.movie.data.repository
 
+import br.com.app.movie.data.model.Credits
 import br.com.app.movie.data.model.Details
 import br.com.app.movie.data.model.Image
 import br.com.app.movie.data.model.Movie
@@ -15,5 +16,7 @@ interface MovieRepository {
     suspend fun getDetails(id: Int): Flow<ApiResult<Details>>
 
     suspend fun getImages(id: Int): Flow<ApiResult<List<Image>>>
+
+    suspend fun getCredits(id: Int): Flow<ApiResult<Credits>>
 
 }
