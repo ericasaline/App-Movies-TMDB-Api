@@ -20,10 +20,13 @@ interface MovieService {
     @GET("movie/top_rated?$api_key&language=pt-BR")
     suspend fun getTopRated(): MoviesDto
 
+    @GET("movie/popular?$api_key&language=pt-BR")
+    suspend fun getPopular(): MoviesDto
+
     @GET("movie/{movie_id}?$api_key&language=pt-BR")
     suspend fun getDetails(@Path("movie_id") id: Int): DetailsDto
 
-    @GET("movie/{movie_id}/images?$api_key&language=pt-BR")
+    @GET("movie/{movie_id}/images?$api_key")
     suspend fun getImages(@Path("movie_id") id: Int): ImagesDto
 
     @GET("movie/{movie_id}/credits?$api_key&language=pt-BR")

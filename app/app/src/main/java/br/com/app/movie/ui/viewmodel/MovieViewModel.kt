@@ -24,6 +24,10 @@ class MovieViewModel(
                 Log.d("WINX", "getTopRated: $it\n\n")
             }
 
+            repository.getPopular().collect {
+                Log.d("WINX", "getPopular: $it\n\n")
+            }
+
             repository.getDetails(id = 1078605).collect {
                 Log.d("WINX", "getDetails: $it\n\n")
             }

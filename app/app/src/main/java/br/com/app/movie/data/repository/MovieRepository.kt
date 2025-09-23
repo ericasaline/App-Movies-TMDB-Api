@@ -15,6 +15,8 @@ interface MovieRepository {
 
     suspend fun getTopRated(): Flow<ApiResult<List<Movie>>>
 
+    suspend fun getPopular(): Flow<ApiResult<List<Movie>>>
+
     suspend fun getDetails(id: Int): Flow<ApiResult<Details>>
 
     suspend fun getImages(id: Int): Flow<ApiResult<List<Image>>>
