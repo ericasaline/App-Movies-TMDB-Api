@@ -7,7 +7,7 @@ import br.com.app.movie.data.remote.dto.MoviesDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-const val api_key = ""
+const val api_key = "api_key="
 
 interface MovieService {
 
@@ -16,6 +16,9 @@ interface MovieService {
 
     @GET("movie/upcoming?$api_key&language=pt-BR")
     suspend fun getUpcoming(): MoviesDto
+
+    @GET("movie/top_rated?$api_key&language=pt-BR")
+    suspend fun getTopRated(): MoviesDto
 
     @GET("movie/{movie_id}?$api_key&language=pt-BR")
     suspend fun getDetails(@Path("movie_id") id: Int): DetailsDto

@@ -28,6 +28,10 @@ class MovieRepositoryImpl(
         service.getUpcoming().results.map { it.toMovie() }
     }.flowOn(dispatcher)
 
+    override suspend fun getTopRated(): Flow<ApiResult<List<Movie>>> = safeCallApi {
+        service.getTopRated().results.map { it.toMovie() }
+    }.flowOn(dispatcher)
+
     override suspend fun getDetails(id: Int): Flow<ApiResult<Details>> = safeCallApi {
         service.getDetails(id).toDetails()
     }.flowOn(dispatcher)

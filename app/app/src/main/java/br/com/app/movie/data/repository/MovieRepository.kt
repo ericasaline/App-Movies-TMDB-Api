@@ -13,6 +13,8 @@ interface MovieRepository {
 
     suspend fun getUpcoming(): Flow<ApiResult<List<Movie>>>
 
+    suspend fun getTopRated(): Flow<ApiResult<List<Movie>>>
+
     suspend fun getDetails(id: Int): Flow<ApiResult<Details>>
 
     suspend fun getImages(id: Int): Flow<ApiResult<List<Image>>>
