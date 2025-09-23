@@ -4,10 +4,12 @@ import br.com.app.movie.data.mapper.toCredits
 import br.com.app.movie.data.mapper.toDetails
 import br.com.app.movie.data.mapper.toImage
 import br.com.app.movie.data.mapper.toMovie
+import br.com.app.movie.data.mapper.toVideo
 import br.com.app.movie.data.model.Credits
 import br.com.app.movie.data.model.Details
 import br.com.app.movie.data.model.Image
 import br.com.app.movie.data.model.Movie
+import br.com.app.movie.data.model.Video
 import br.com.app.movie.data.remote.api.ApiResult
 import br.com.app.movie.data.remote.api.safeCallApi
 import br.com.app.movie.data.remote.service.MovieService
@@ -46,6 +48,10 @@ class MovieRepositoryImpl(
 
     override suspend fun getCredits(id: Int): Flow<ApiResult<Credits>> = safeCallApi {
         service.getCredits(id).toCredits()
+    }.flowOn(dispatcher)
+
+    override suspend fun getVideos(id: Int): Flow<ApiResult<List<Video>>> = safeCallApi {
+        service.getVideos(id).videos.map { it.toVideo() }
     }.flowOn(dispatcher)
 
 }

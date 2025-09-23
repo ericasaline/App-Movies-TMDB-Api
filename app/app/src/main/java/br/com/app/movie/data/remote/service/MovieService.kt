@@ -4,6 +4,7 @@ import br.com.app.movie.data.remote.dto.CreditsDto
 import br.com.app.movie.data.remote.dto.DetailsDto
 import br.com.app.movie.data.remote.dto.ImagesDto
 import br.com.app.movie.data.remote.dto.MoviesDto
+import br.com.app.movie.data.remote.dto.VideosDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -31,5 +32,8 @@ interface MovieService {
 
     @GET("movie/{movie_id}/credits?$api_key&language=pt-BR")
     suspend fun getCredits(@Path("movie_id") id: Int): CreditsDto
+
+    @GET("movie/{movie_id}/videos?$api_key")
+    suspend fun getVideos(@Path("movie_id") id: Int): VideosDto
 
 }
