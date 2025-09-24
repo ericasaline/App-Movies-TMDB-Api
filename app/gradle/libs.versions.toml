@@ -6,6 +6,7 @@ kotlinTest = "2.0.0"
 kotlinxCoroutinesAndroid = "1.8.1"
 kotlinxCoroutinesTest = "1.8.1"
 kotlinxSerializationJson = "1.7.3"
+lottieCompose = "6.3.0"
 mockk = "1.13.8"
 navigationCompose = "2.9.4"
 kotlin = "2.0.21"
@@ -42,6 +43,7 @@ kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotl
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+lottie-compose = { module = "com.airbnb.android:lottie-compose", version.ref = "lottieCompose" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }

@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">Movie</string>
+    <string name="text_discover">Descobrir</string>
+    <string name="text_error"><![CDATA[ERRO :( \n\nDesculpe não conseguimos prosseguir com a requisição, APRECIE O PANDA e tente novamente!]]></string>
+    <string name="text_try_again">Tentar Novamente</string>
+    <string name="text_button_description_watched">Botão para acessar filmes marcados como assistidos</string>
+    <string name="text_button_watched">Assistidos</string>
+    <string name="text_button_description_search">Botão para pesquisar filmes</string>
+    <string name="text_now_playing">Nos Cinemas</string>
+    <string name="text_coming">Em Breve</string>
+    <string name="text_not_found"><![CDATA[NENHUM RESULTADO ENCONTRADO :( \n\nDesculpe não conseguimos encontrar nada sobre o termo: %1$s!]]></string>
+    <string name="text_button_description_not_found">Botão voltar para home</string>
+    <string name="text_description_movie_poster">Poster do filme</string>
+    <string name="text_sort">Ordenar</string>
+    <string name="text_close">Fechar</string>
+    <string name="text_name">Nome</string>
+    <string name="text_date">Data</string>
+    <string name="text_rated">Avaliação</string>
+    <string name="text_see_more">Ver mais</string>
+    <string name="text_description_search_icon">ícone de pesquisa</string>
+    <string name="text_movie_search">Pesquisar pelo filme</string>
 </resources>
