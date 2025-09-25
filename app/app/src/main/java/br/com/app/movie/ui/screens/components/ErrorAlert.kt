@@ -64,12 +64,8 @@ fun ErrorAlert(
             Button(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(16.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = DarkGreen,
-                ),
-                onClick = {
-                    onClickTryAgain.invoke()
-                },
+                colors = ButtonDefaults.buttonColors(containerColor = DarkGreen,),
+                onClick = { onClickTryAgain.invoke() },
                 content = {
                     Text(
                         modifier = Modifier.padding(10.dp),

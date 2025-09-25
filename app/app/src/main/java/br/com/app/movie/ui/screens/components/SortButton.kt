@@ -82,9 +82,7 @@ fun SortButton(
                 }
             )
             ExtendedFloatingActionButton(
-                onClick = {
-                    expanded = !expanded
-                },
+                onClick = { expanded = !expanded },
                 containerColor = DarkGreen,
                 icon = {
                     Icon(

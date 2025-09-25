@@ -1,48 +1,68 @@
 package br.com.app.movie.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
+import androidx.compose.material3.pulltorefresh.PullToRefreshDefaults.Indicator
+import androidx.compose.material3.pulltorefresh.pullToRefresh
+import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import br.com.app.movie.R
-import br.com.app.movie.ui.model.CarouselItem
-import br.com.app.movie.ui.screens.components.ItemsData
+import br.com.app.movie.ui.model.PosterItem
+import br.com.app.movie.ui.screens.components.Carousel
+import br.com.app.movie.ui.screens.components.TopBar
 import br.com.app.movie.ui.theme.DarkGreen
 import br.com.app.movie.ui.theme.LightGreen
 import br.com.app.movie.ui.theme.LightOrange
 import br.com.app.movie.ui.theme.Pink
+import br.com.app.movie.ui.viewmodel.MovieViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Testecreen(
     onClickSearch: () -> Unit,
-    onClickTryAgain: () -> Unit
+    onClickTryAgain: () -> Unit,
+    viewModel: MovieViewModel
 ) {
     val scrollState = rememberScrollState()
-    val shouldScroll = remember { mutableStateOf(false) }
+    val shouldScroll = remember { mutableStateOf(true) }
+
+    var isRefreshing = remember { mutableStateOf(false) }
+
+    val pullRefreshState = rememberPullToRefreshState()
+
+
+    // teste
+    viewModel.teste()
 
     Scaffold(
         topBar = {
-//            TopBar(
-//                onClickSearch = {
-//                    onClickSearch.invoke()
-//                }
-//            )
+            TopBar(
+                onClickSearch = {
+                }
+            )
         },
         floatingActionButton = {
             if (shouldScroll.value == true) {
@@ -88,132 +108,163 @@ fun Testecreen(
                     .fillMaxSize(),
                 content = {
 
+                    PullToRefreshBox(
+                        isRefreshing = isRefreshing.value,
+                        state = pullRefreshState,
+                        onRefresh = {
 
-
-
-
-                    ItemsData(
-                        sectionTitle = "Nos cinemas",
-                        hasMore = true,
-                        onClickSeeMore = {},
-                        carousel = listOf(
-
-                            CarouselItem(
-                                id =  0,
-                                imageRes = R.drawable.ic_launcher_background,
-                                contentDescription = ""
-                            ),
-                            CarouselItem(
-                                id =  1,
-                                imageRes = R.drawable.ic_launcher_background,
-                                contentDescription = ""
-                            ),
-                            CarouselItem(
-                                id =  2,
-                                imageRes = R.drawable.ic_launcher_background,
-                                contentDescription = ""
-                            ),
-                            CarouselItem(
-                                id =  3,
-                                imageRes = R.drawable.ic_launcher_background,
-                                contentDescription = ""
+                        },
+                        indicator = {
+                            Indicator(
+                                modifier = Modifier.align(Alignment.TopCenter),
+                                isRefreshing = isRefreshing.value,
+                                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                                color = MaterialTheme.colorScheme.onPrimaryContainer,
+                                state = pullRefreshState
                             )
-                        )
+                        },
+                        content = {
 
+                            Column(modifier = Modifier.fillMaxSize()) {
+                                List(5) {
+                                   // Text("jhcksjdhgjkdfhkj")
+                                    Carousel(
+                                        itemName ="TESTE",
+                                        carouselItems = List(12){
+                                            PosterItem()
+                                        }
 
+                                    )
+                                }
+                            }
+
+                        }
                     )
 
 
-                    ItemsData(
-                        sectionTitle = "Em Breve",
-                        hasMore = true,
-                        onClickSeeMore = {},
-                        carousel = listOf(
 
-                            CarouselItem(
-                                id =  0,
-                                imageRes = R.drawable.ic_launcher_background,
-                                contentDescription = ""
-                            ),
-                            CarouselItem(
-                                id =  1,
-                                imageRes = R.drawable.ic_launcher_background,
-                                contentDescription = ""
-                            ),
-                            CarouselItem(
-                                id =  2,
-                                imageRes = R.drawable.ic_launcher_background,
-                                contentDescription = ""
-                            ),
-                            CarouselItem(
-                                id =  3,
-                                imageRes = R.drawable.ic_launcher_background,
-                                contentDescription = ""
-                            )
-                        )
-
-
-                    )
-
-
-                    ItemsData(
-                        sectionTitle = "Mais Avaliados",
-                        carousel = listOf(
-
-                            CarouselItem(
-                                id =  0,
-                                imageRes = R.drawable.ic_launcher_background,
-                                contentDescription = ""
-                            ),
-                            CarouselItem(
-                                id =  1,
-                                imageRes = R.drawable.ic_launcher_background,
-                                contentDescription = ""
-                            ),
-                            CarouselItem(
-                                id =  2,
-                                imageRes = R.drawable.ic_launcher_background,
-                                contentDescription = ""
-                            ),
-                            CarouselItem(
-                                id =  3,
-                                imageRes = R.drawable.ic_launcher_background,
-                                contentDescription = ""
-                            )
-                        )
-
-
-                    )
-
-
-                    ItemsData(
-                        sectionTitle = "Popular",
-                        carousel = listOf(
-
-                            CarouselItem(
-                                id =  0,
-                                imageRes = R.drawable.ic_launcher_background,
-                                contentDescription = ""
-                            ),
-                            CarouselItem(
-                                id =  1,
-                                imageRes = R.drawable.ic_launcher_background,
-                                contentDescription = ""
-                            ),
-                            CarouselItem(
-                                id =  2,
-                                imageRes = R.drawable.ic_launcher_background,
-                                contentDescription = ""
-                            ),
-                            CarouselItem(
-                                id =  3,
-                                imageRes = R.drawable.ic_launcher_background,
-                                contentDescription = ""
-                            )
-                        )
-
-
-                    )
+//                    ItemsData(
+//                        sectionTitle = "Nos cinemas",
+//                        hasMore = true,
+//                        onClickSeeMore = {},
+//                        carousel = listOf(
+//
+//                            CarouselItem(
+//                                id =  0,
+//                                poster = R.drawable.ic_launcher_background,
+//                                title = ""
+//                            ),
+//                            CarouselItem(
+//                                id =  1,
+//                                poster = R.drawable.ic_launcher_background,
+//                                title = ""
+//                            ),
+//                            CarouselItem(
+//                                id =  2,
+//                                poster = R.drawable.ic_launcher_background,
+//                                title = ""
+//                            ),
+//                            CarouselItem(
+//                                id =  3,
+//                                poster = R.drawable.ic_launcher_background,
+//                                title = ""
+//                            )
+//                        )
+//
+//
+//                    )
+//
+//
+//                    ItemsData(
+//                        sectionTitle = "Em Breve",
+//                        hasMore = true,
+//                        onClickSeeMore = {},
+//                        carousel = listOf(
+//
+//                            CarouselItem(
+//                                id =  0,
+//                                poster = R.drawable.ic_launcher_background,
+//                                title = ""
+//                            ),
+//                            CarouselItem(
+//                                id =  1,
+//                                poster = R.drawable.ic_launcher_background,
+//                                title = ""
+//                            ),
+//                            CarouselItem(
+//                                id =  2,
+//                                poster = R.drawable.ic_launcher_background,
+//                                title = ""
+//                            ),
+//                            CarouselItem(
+//                                id =  3,
+//                                poster = R.drawable.ic_launcher_background,
+//                                title = ""
+//                            )
+//                        )
+//
+//
+//                    )
+//
+//
+//                    ItemsData(
+//                        sectionTitle = "Mais Avaliados",
+//                        carousel = listOf(
+//
+//                            CarouselItem(
+//                                id =  0,
+//                                poster = R.drawable.ic_launcher_background,
+//                                title = ""
+//                            ),
+//                            CarouselItem(
+//                                id =  1,
+//                                poster = R.drawable.ic_launcher_background,
+//                                title = ""
+//                            ),
+//                            CarouselItem(
+//                                id =  2,
+//                                poster = R.drawable.ic_launcher_background,
+//                                title = ""
+//                            ),
+//                            CarouselItem(
+//                                id =  3,
+//                                poster = R.drawable.ic_launcher_background,
+//                                title = ""
+//                            )
+//                        )
+//
+//
+//                    )
+//
+//
+//                    ItemsData(
+//                        sectionTitle = "Popular",
+//                        carousel = listOf(
+//
+//                            CarouselItem(
+//                                id =  0,
+//                                poster = R.drawable.ic_launcher_background,
+//                                title = ""
+//                            ),
+//                            CarouselItem(
+//                                id =  1,
+//                                poster = R.drawable.ic_launcher_background,
+//                                title = ""
+//                            ),
+//                            CarouselItem(
+//                                id =  2,
+//                                poster = R.drawable.ic_launcher_background,
+//                                title = ""
+//                            ),
+//                            CarouselItem(
+//                                id =  3,
+//                                poster = R.drawable.ic_launcher_background,
+//                                title = ""
+//                            )
+//                        )
+//
+//
+//                    )
 
 
                    // Search()
@@ -244,8 +295,16 @@ fun Testecreen(
 //
 //                    Loading()
 
+
+
+
                 }
+
+
             )
+
+
+
         }
     )
 }

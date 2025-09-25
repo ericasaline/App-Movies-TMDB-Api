@@ -31,7 +31,8 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(
-    onClickSearch: () -> Unit
+    onClickSearch: () -> Unit,
+    playAnimation: Boolean = true
 ) {
     TopAppBar(
         colors = topAppBarColors(containerColor = DarkGreen),
@@ -54,9 +55,7 @@ fun TopBar(
                     )
                     Spacer(modifier = Modifier.weight(1f))
                     IconButton(
-                        onClick = {
-                            onClickSearch.invoke()
-                        },
+                        onClick = { onClickSearch.invoke() },
                         content = {
                             Icon(
                                 modifier = Modifier.size(36.dp),
@@ -68,6 +67,8 @@ fun TopBar(
                     )
                     LoadingAnimation(
                         modifier = Modifier.fillMaxHeight(),
+                        isPlaying = playAnimation,
+                        interactions = 2,
                         animationSpec = LottieCompositionSpec.RawRes(R.raw.movie)
                     )
                 }

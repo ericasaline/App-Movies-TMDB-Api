@@ -1,6 +1,8 @@
 package br.com.app.movie.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -13,21 +15,33 @@ import br.com.app.movie.ui.viewmodel.MovieViewModel
 fun MovieNavGraph(
     viewModel: MovieViewModel
 ) {
-    val navController = rememberNavController()
+    NavHost(
+        navController = rememberNavController(),
+        startDestination = Routes.HOME_SCREEN
+    ) {
 
-    NavHost(navController = navController, startDestination = Routes.TESTE) {
 
-        composable(route = Routes.TESTE) {
+        composable(route = "teste") {
             Testecreen(
                 onClickSearch = {},
-                onClickTryAgain = {}
+                onClickTryAgain = {},
+                viewModel
             )
         }
 
         composable(route = Routes.HOME_SCREEN) {
+            LaunchedEffect(Unit) {
+                viewModel.loadHome()
+            }
+
             HomeScreen(
+                isLoading = viewModel.isLoading.collectAsState(),sections =  viewModel.sections.collectAsState().value,
+                mapMovieToCarousel = { movieSection, apiResult ->
+                    viewModel.mapMovieToCarousel(movieSection, apiResult)
+                },
                 onClickSearch = {},
-                onClickTryAgain = {}
+                onClickSeeMore = {},
+                onClickWatched = {}
             )
         }
     }

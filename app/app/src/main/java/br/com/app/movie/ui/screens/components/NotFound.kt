@@ -78,9 +78,7 @@ fun NotFound(
                         colors = ButtonDefaults.buttonColors(
                             containerColor = DarkGreen
                         ),
-                        onClick = {
-                            onClickHome.invoke()
-                        },
+                        onClick = { onClickHome.invoke() },
                         content = {
                             Icon(
                                 modifier = Modifier.padding(10.dp),
@@ -97,9 +95,7 @@ fun NotFound(
                         colors = ButtonDefaults.buttonColors(
                             containerColor = DarkGreen
                         ),
-                        onClick = {
-                            onClickNowPlaying.invoke()
-                        },
+                        onClick = { onClickNowPlaying.invoke() },
                         content = {
                             Text(
                                 modifier = Modifier.padding(10.dp),

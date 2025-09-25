@@ -104,13 +104,13 @@ fun ListItems(
                                         .clip(RoundedCornerShape(12.dp))
                                         .align(Alignment.CenterHorizontally),
                                     contentScale = ContentScale.FillBounds,
-                                    painter = painterResource(movie.poster),
+                                    painter = painterResource(R.drawable.ic_launcher_background),  //alterar
                                     contentDescription = stringResource(R.string.text_description_movie_poster)
                                 )
                                 Spacer(modifier = Modifier.height(4.dp))
                                 Text(
                                     modifier = Modifier.fillMaxWidth(),
-                                    text = movie.title,
+                                    text = movie.title ?: "",
                                     color = DarkGreen,
                                     textAlign = TextAlign.Center,
                                     maxLines = 1,
@@ -132,11 +132,7 @@ fun ListItems(
 private fun ListItemsPreview() {
     ListItems(
         movieList = List(12) {
-            PosterItem(
-                id = 0,
-                poster = R.drawable.ic_launcher_background,
-                title = "Batman"
-            )
+            PosterItem()
         }
     )
 }

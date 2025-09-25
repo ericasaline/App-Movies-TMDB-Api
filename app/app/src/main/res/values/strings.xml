@@ -6,8 +6,10 @@
     <string name="text_button_description_watched">Botão para acessar filmes marcados como assistidos</string>
     <string name="text_button_watched">Assistidos</string>
     <string name="text_button_description_search">Botão para pesquisar filmes</string>
-    <string name="text_now_playing">Nos Cinemas</string>
+    <string name="text_now_playing">Em Cartaz</string>
     <string name="text_coming">Em Breve</string>
+    <string name="text_popular">Popular</string>
+    <string name="text_top_rated">Top Avaliados</string>
     <string name="text_not_found"><![CDATA[NENHUM RESULTADO ENCONTRADO :( \n\nDesculpe não conseguimos encontrar nada sobre o termo: %1$s!]]></string>
     <string name="text_button_description_not_found">Botão voltar para home</string>
     <string name="text_description_movie_poster">Poster do filme</string>
