@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name">Movie</string>
     <string name="text_discover">Descobrir</string>
-    <string name="text_error"><![CDATA[ERRO :( \n\nDesculpe não conseguimos prosseguir com a requisição, APRECIE O PANDA e tente novamente!]]></string>
-    <string name="text_try_again">Tentar Novamente</string>
+    <string name="text_error"><![CDATA[ERRO :( \n\nDesculpe não conseguimos prosseguir com a requisição, APRECIE O PANDA e tente novamente mais tarde!]]></string>
+    <string name="text_button_error">Voltar</string>
     <string name="text_button_description_watched">Botão para acessar filmes marcados como assistidos</string>
     <string name="text_button_watched">Assistidos</string>
     <string name="text_button_description_search">Botão para pesquisar filmes</string>
+    <string name="text_button_description_back">Botão voltar</string>
     <string name="text_now_playing">Em Cartaz</string>
     <string name="text_coming">Em Breve</string>
     <string name="text_popular">Popular</string>
@@ -14,6 +15,7 @@
     <string name="text_button_description_not_found">Botão voltar para home</string>
     <string name="text_description_movie_poster">Poster do filme</string>
     <string name="text_sort">Ordenar</string>
+    <string name="text_sort_by">Ordenado por: %1$s</string>
     <string name="text_close">Fechar</string>
     <string name="text_name">Nome</string>
     <string name="text_date">Data</string>

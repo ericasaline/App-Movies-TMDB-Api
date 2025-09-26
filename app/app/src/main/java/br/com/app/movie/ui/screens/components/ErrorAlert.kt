@@ -29,7 +29,7 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 
 @Composable
 fun ErrorAlert(
-    onClickTryAgain: () -> Unit
+    onClickBack: () -> Unit
 ) {
     Column(
         modifier = Modifier
@@ -64,12 +64,12 @@ fun ErrorAlert(
             Button(
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(16.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = DarkGreen,),
-                onClick = { onClickTryAgain.invoke() },
+                colors = ButtonDefaults.buttonColors(containerColor = DarkGreen),
+                onClick = { onClickBack.invoke() },
                 content = {
                     Text(
                         modifier = Modifier.padding(10.dp),
-                        text = stringResource(R.string.text_try_again),
+                        text = stringResource(R.string.text_button_error),
                         style = MaterialTheme.typography.bodyLarge.copy(
                             brush = Brush.linearGradient(
                                 colors = listOf(
@@ -88,6 +88,6 @@ fun ErrorAlert(
 @Composable
 private fun ErrorAlertPreview() {
     ErrorAlert(
-        onClickTryAgain = {}
+        onClickBack = {}
     )
 }

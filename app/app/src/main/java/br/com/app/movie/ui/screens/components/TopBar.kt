@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -31,8 +32,12 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(
-    onClickSearch: () -> Unit,
-    playAnimation: Boolean = true
+    onClickSearch: () -> Unit = {},
+    onClickBack: () -> Unit = {},
+    hasBackIcon: Boolean = false,
+    hasSearchIcon: Boolean = true,
+    playAnimation: Boolean = true,
+    animationInteractions: Int = 3
 ) {
     TopAppBar(
         colors = topAppBarColors(containerColor = DarkGreen),
@@ -42,45 +47,69 @@ fun TopBar(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
                 content = {
-                    Text(
-                        text = stringResource(R.string.text_discover),
-                        color = Pink,
-                        style = MaterialTheme.typography.titleLarge.copy(
-                            brush = Brush.linearGradient(
-                                colors = listOf(
-                                    Pink, LightOrange
+                    if (!hasBackIcon) {
+                        Text(
+                            text = stringResource(R.string.text_discover),
+                            color = Pink,
+                            style = MaterialTheme.typography.titleLarge.copy(
+                                brush = Brush.linearGradient(
+                                    colors = listOf(
+                                        Pink, LightOrange
+                                    )
                                 )
                             )
                         )
-                    )
+                    }
                     Spacer(modifier = Modifier.weight(1f))
-                    IconButton(
-                        onClick = { onClickSearch.invoke() },
-                        content = {
-                            Icon(
-                                modifier = Modifier.size(36.dp),
-                                imageVector = Icons.Filled.Search,
-                                tint = LightOrange,
-                                contentDescription = stringResource(R.string.text_button_description_search)
-                            )
-                        }
-                    )
+                    if (hasSearchIcon) {
+                        IconButton(
+                            onClick = { onClickSearch.invoke() },
+                            content = {
+                                Icon(
+                                    modifier = Modifier.size(36.dp),
+                                    imageVector = Icons.Filled.Search,
+                                    tint = LightOrange,
+                                    contentDescription = stringResource(R.string.text_button_description_search)
+                                )
+                            }
+                        )
+                    }
                     LoadingAnimation(
                         modifier = Modifier.fillMaxHeight(),
                         isPlaying = playAnimation,
-                        interactions = 2,
+                        interactions = animationInteractions,
                         animationSpec = LottieCompositionSpec.RawRes(R.raw.movie)
                     )
                 }
             )
+        },
+        navigationIcon = {
+            if (hasBackIcon) {
+                IconButton(
+                    onClick = { onClickBack.invoke() },
+                    content = {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            tint = Pink,
+                            contentDescription = stringResource(R.string.text_button_description_back)
+                        )
+                    }
+                )
+            }
         }
     )
 }
 
 @Preview
 @Composable
-private fun TopBarPreview() {
+private fun TopBarNoIconBackPreview() {
+    TopBar()
+}
+
+@Preview
+@Composable
+private fun TopBarWithIconBackPreview() {
     TopBar(
-        onClickSearch = {}
+        hasBackIcon = true
     )
 }

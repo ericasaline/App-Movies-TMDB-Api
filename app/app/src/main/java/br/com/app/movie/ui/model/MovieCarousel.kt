@@ -6,5 +6,5 @@ data class MovieCarousel(
     @StringRes val title: Int,
     val hasMore: Boolean,
     val isLoading: Boolean,
-    val items: List<PosterItem>
+    val items: List<MovieItem>
 )

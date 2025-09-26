@@ -64,16 +64,16 @@ fun SortButton(
                                 }
                             )
                             ButtonSortOption(
-                                option = stringResource(R.string.text_sort),
+                                option = stringResource(R.string.text_rated),
                                 onClick = {
-                                    onSortByDate.invoke()
+                                    onSortByRating.invoke()
                                     expanded = false
                                 }
                             )
                             ButtonSortOption(
                                 option = stringResource(R.string.text_date),
                                 onClick = {
-                                    onSortByRating.invoke()
+                                    onSortByDate.invoke()
                                     expanded = false
                                 }
                             )

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.verticalScroll
@@ -29,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import br.com.app.movie.R
 import br.com.app.movie.ui.theme.DarkGreen
 import br.com.app.movie.ui.theme.LightGreen
@@ -38,12 +40,12 @@ import br.com.app.movie.ui.theme.Pink
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchBar(
-    onClickSearch: (String) -> Unit,
+    onSearch: (String) -> Unit,
 ) {
     var textFieldState = TextFieldState(initialText = "")
     var searchResults = listOf("papa", "papagaio", "teste", "ostra")
 
-    var expanded by rememberSaveable { mutableStateOf(false) }
+    var expanded by rememberSaveable { mutableStateOf(true) }
     val scrollState = rememberScrollState()
 
     Box(
@@ -52,10 +54,11 @@ fun SearchBar(
             SearchBar(
                 modifier = Modifier.align(Alignment.TopCenter),
                 colors = SearchBarDefaults.colors(
-                    containerColor = DarkGreen
+                    containerColor = DarkGreen,
                 ),
                 inputField = {
                     InputField(
+                        modifier = Modifier.padding(horizontal = 16.dp),
                         query = textFieldState.text.toString(),
                         onQueryChange = {
                             textFieldState.edit {
@@ -63,7 +66,7 @@ fun SearchBar(
                             }
                         },
                         onSearch = {
-                            onClickSearch(textFieldState.text.toString())
+                            onSearch(textFieldState.text.toString())
                             expanded = false
                         },
                         expanded = expanded,
@@ -72,7 +75,7 @@ fun SearchBar(
                         },
                         colors = TextFieldDefaults.colors(
                             cursorColor = LightOrange,
-                            focusedTextColor = LightOrange
+                            focusedTextColor = LightOrange,
                         ),
                         trailingIcon = {
                             Icon(
@@ -132,6 +135,6 @@ fun SearchBar(
 @Composable
 private fun SearchBarPreview() {
     SearchBar(
-        onClickSearch = {}
+        onSearch = {}
     )
 }

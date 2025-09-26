@@ -25,7 +25,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import br.com.app.movie.R
-import br.com.app.movie.ui.model.PosterItem
+import br.com.app.movie.ui.model.MovieItem
 import br.com.app.movie.ui.theme.DarkGreen
 import coil.compose.AsyncImage
 
@@ -35,7 +35,7 @@ private const val URL = "https://image.tmdb.org/t/p/w500"
 @Composable
 fun Carousel(
     itemName: String,
-    carouselItems: List<PosterItem>,
+    carouselItems: List<MovieItem>,
     onClickSeeMore: () -> Unit = {},
     hasMore: Boolean = false
 ) {
@@ -101,7 +101,7 @@ private fun CarouselPreview() {
         hasMore = true,
         onClickSeeMore = {},
         carouselItems = List(5) {
-            PosterItem()
+            MovieItem()
         }
     )
 }

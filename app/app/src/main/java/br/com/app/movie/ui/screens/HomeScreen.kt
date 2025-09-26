@@ -48,7 +48,7 @@ fun HomeScreen(
         topBar = {
             TopBar(
                 onClickSearch = { onClickSearch.invoke() },
-                playAnimation = !isLoading.value
+                playAnimation = false
             )
         },
         floatingActionButton = {
@@ -116,7 +116,7 @@ fun HomeScreen(
 
                                                 Carousel(
                                                     itemName = stringResource(movie.title),
-                                                    carouselItems = movie.items,
+                                                    carouselItems = if (movie.hasMore) movie.items.take(7) else movie.items,
                                                     hasMore = movie.hasMore,
                                                     onClickSeeMore = onClickSeeMore
                                                 )
